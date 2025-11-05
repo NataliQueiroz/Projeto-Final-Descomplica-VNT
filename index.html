@@ -7,9 +7,26 @@
   <link href="index.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Bem vindo(a) à lista de compras e remédios!</h1>
-  <input type="text" id="user-name" placeholder="Digite seu nome">
-  <button id="btn-save-user-name">Salvar</button>
-  <script src="script.js"></script>
+  <h1 id="welcome-message">Bem vindo(a) à lista de compras e remédios!</h1>
+  <div id="container-user-name">
+    <input type="text" id="user-name" placeholder="Digite seu nome">
+    <button id="btn-save-user-name">Salvar</button> 
+  </div>
+  <div id="container-choice-type-list">
+    <h2>Escolha o tipo de lista: </h2>
+    <fieldset>
+      <legend>Tipo de lista</legend>
+      <label for="option-type-compras">
+        <input type="radio" id="option-type-compras" name="tipo-lista" value="compras" checked>
+        Compras
+      </label>
+      <label for="option-type-remedios">
+        <input type="radio" d="option-type-remedios" name="tipo-lista" value="remedios">
+        Remédios
+      </label>
+    </fieldset>
+      <button type="submit" id="btn-save-type-list">Escolher</button>
+  </div>
+   <script src="script.js"></script>
 </body>
 </html>
