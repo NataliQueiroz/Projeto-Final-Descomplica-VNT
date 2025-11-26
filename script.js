@@ -9,7 +9,7 @@ const btnSaveTypeList = document.getElementById("btn-save-type-list");
 const containerChoiceTypeList = document.getElementById(
   "container-choice-type-list"
 );
-const containerAddItem = document.getElementById("container-add-item");
+const containerAddItem = document.getElementById("container-add-items");
 const itemNameInput = document.getElementById("item-name");
 const itemQuantityInput = document.getElementById("item-quantity");
 const btnAddItem = document.getElementById("btn-add-item");
@@ -18,7 +18,20 @@ const tableBodyItems = document.getElementById("table-body-items");
 const formItem = document.getElementById("form-item");
 
 const shoppingList = [];
-let userName = " ";
+let userName = "";
+let listType = "";
+
+btnSaveTypeList.addEventListener("click", () => {
+  if (radioButtonTypeCompras !== null && radioButtonTypeCompras.checked) {
+    listType = "Compras";
+  }
+  if (radioButtonTypeRemedios !== null && radioButtonTypeRemedios.checked) {
+    listType = "Remédios";
+  }
+
+  containerAddItem.style.display = "block";
+  tableItems.style.display = "block";
+});
 
 userNameInput.addEventListener("input", (event) => {
   userName = event.target.value;
@@ -36,7 +49,8 @@ btnSaveUserName.addEventListener("click", () => {
   window.alert("O nome deve ter entre 2 e 50 caracteres");
 });
 
-btnAddItem.addEventListener("click", () => {
+btnAddItem.addEventListener("click", (event) => {
+  event.preventDefault();
   const itemName = itemNameInput.value.trim();
   const itemQuantity = parseInt(itemQuantityInput.value);
 
@@ -71,6 +85,16 @@ btnAddItem.addEventListener("click", () => {
     row.appendChild(quantityCell);
 
     const actionsCell = document.createElement("td");
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Excluir";
+    deleteButton.addEventListener("click", () => {
+      const index = shoppingList.indexOf(item);
+      if (index > -1) {
+        shoppingList.splice(index, 1);
+        tableBodyItems.removeChild(row);
+      }
+    });
+    actionsCell.appendChild(deleteButton);
     row.appendChild(actionsCell);
 
     tableBodyItems.appendChild(row);
