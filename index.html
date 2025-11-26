@@ -1,32 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Compras e Remédios</title>
-  <link href="index.css" rel="stylesheet">
-</head>
-<body>
-  <h1 id="welcome-message">Bem vindo(a) à lista de compras e remédios!</h1>
-  <div id="container-user-name">
-    <input type="text" id="user-name" placeholder="Digite seu nome">
-    <button id="btn-save-user-name">Salvar</button> 
-  </div>
-  <div id="container-choice-type-list">
-    <h2>Escolha o tipo de lista: </h2>
-    <fieldset>
-      <legend>Tipo de lista</legend>
-      <label for="option-type-compras">
-        <input type="radio" id="option-type-compras" name="tipo-lista" value="compras" checked>
-        Compras
-      </label>
-      <label for="option-type-remedios">
-        <input type="radio" d="option-type-remedios" name="tipo-lista" value="remedios">
-        Remédios
-      </label>
-    </fieldset>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Compras e Remédios</title>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1 id="welcome-message">Bem vindo(a) à lista de compras e remédios!</h1>
+    <div id="container-user-name">
+      <input type="text" id="user-name" placeholder="Digite seu nome" />
+      <button id="btn-save-user-name">Salvar</button>
+    </div>
+    <div id="container-choice-type-list">
+      <h2>Escolha o tipo de lista:</h2>
+      <fieldset>
+        <legend>Tipo de lista</legend>
+        <label for="option-type-compras">
+          <input
+            type="radio"
+            id="option-type-compras"
+            name="tipo-lista"
+            value="compras"
+            checked
+          />
+          Compras
+        </label>
+        <label for="option-type-remedios">
+          <input
+            type="radio"
+            d="option-type-remedios"
+            name="tipo-lista"
+            value="remedios"
+          />
+          Remédios
+        </label>
+      </fieldset>
       <button type="submit" id="btn-save-type-list">Escolher</button>
-  </div>
-   <script src="script.js"></script>
-</body>
+    </div>
+    <div id="container-add-items">
+      <h2>Adicionar item à lista</h2>
+      <form id="form-item">
+        <input type="text" id="item-name" placeholder="Nome do item" />
+        <input
+          type="number"
+          id="item-quantity"
+          placeholder="Quantidade"
+          min="1"
+        />
+        <button type="submit" id="btn-add-item">Adicionar item</button>
+      </form>
+    </div>
+    <div id="table-items">
+      <table>
+        <thead>
+          <tr>
+            Item
+          </tr>
+          <tr>
+            Quantidade
+          </tr>
+          <tr>
+            Ações
+          </tr>
+        </thead>
+        <tbody id="table-body-items"></tbody>
+      </table>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
