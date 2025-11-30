@@ -7,65 +7,80 @@
     <link href="index.css" rel="stylesheet" />
   </head>
   <body>
-    <h1 id="welcome-message">Bem vindo(a) à lista de compras e remédios!</h1>
-    <div id="container-user-name">
-      <input type="text" id="user-name" placeholder="Digite seu nome" />
-      <button id="btn-save-user-name">Salvar</button>
+    <div id="container-home-user-name" class="centered-content-column">
+      <section id="home">
+        <h1 id="welcome-message">
+          Bem vindo(a) à lista de compras e remédios!
+        </h1>
+      </section>
+      <div id="container-user-name">
+        <input type="text" id="user-name" placeholder="Digite seu nome" />
+        <button id="btn-save-user-name">Salvar</button>
+      </div>
     </div>
     <div id="container-choice-type-list">
-      <h2>Escolha o tipo de lista:</h2>
-      <fieldset>
-        <legend>Tipo de lista</legend>
-        <label for="option-type-compras">
-          <input
-            type="radio"
-            id="option-type-compras"
-            name="tipo-lista"
-            value="compras"
-            checked
-          />
-          Compras
-        </label>
-        <label for="option-type-remedios">
-          <input
-            type="radio"
-            id="option-type-remedios"
-            name="tipo-lista"
-            value="remedios"
-          />
-          Remédios
-        </label>
-      </fieldset>
-      <button type="submit" id="btn-save-type-list">Escolher</button>
+      <section>
+        <h2>Escolha o tipo de lista:</h2>
+        <fieldset>
+          <legend>Tipo de lista</legend>
+          <label for="option-type-compras">
+            <input
+              type="radio"
+              id="option-type-compras"
+              name="tipo-lista"
+              value="compras"
+              checked
+            />
+            Compras
+          </label>
+          <label for="option-type-remedios">
+            <input
+              type="radio"
+              id="option-type-remedios"
+              name="tipo-lista"
+              value="remedios"
+            />
+            Remédios
+          </label>
+        </fieldset>
+      </section>
+      <div class="div-gap">
+        <button type="submit" id="btn-save-type-list">Escolher</button>
+      </div>
     </div>
-    <div id="container-add-items" style="display: none">
-      <h2>Adicionar item à lista</h2>
-      <form id="form-item">
-        <input type="text" id="item-name" placeholder="Nome do item" />
-        <input
-          type="number"
-          id="item-quantity"
-          placeholder="Quantidade"
-          min="1"
-        />
-        <button type="submit" id="btn-add-item">Adicionar item</button>
-      </form>
+
+    <div
+      id="container-add-items"
+      style="display: none"
+      class="centered-content-column"
+    >
+      <div class="section-item-width">
+        <h2>Adicionar item à lista</h2>
+        <form id="form-item">
+          <input type="text" id="item-name" placeholder="Nome do item" />
+          <input
+            type="number"
+            id="item-quantity"
+            placeholder="Quantidade"
+            min="1"
+          />
+          <button type="submit" id="btn-add-item">Adicionar item</button>
+        </form>
+      </div>
     </div>
-    <div id="table-items" style="display: none">
-      <table>
-        <thead>
-          <tr>
-            Item
-          </tr>
-          <tr>
-            Quantidade
-          </tr>
-          <tr>
-            Ações
-          </tr>
-        </thead>
-        <tbody id="table-body-items"></tbody>
-      </table>
+    <div id="table-items" style="display: none" class="centered-content-column">
+      <div class="section-item-width">
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantidade</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="table-body-items"></tbody>
+        </table>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

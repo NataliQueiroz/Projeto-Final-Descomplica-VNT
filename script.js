@@ -1,3 +1,6 @@
+const containerHomeUserName = document.getElementById(
+  "container-home-user-name"
+);
 const userNameInput = document.getElementById("user-name");
 const btnSaveUserName = document.getElementById("btn-save-user-name");
 const containerUserName = document.getElementById("container-user-name");
@@ -32,8 +35,8 @@ btnSaveTypeList.addEventListener("click", () => {
     listType = "Remédios";
   }
 
-  containerAddItem.style.display = "block";
-  tableItems.style.display = "block";
+  containerAddItem.style.display = "flex";
+  tableItems.style.display = "flex";
   renderShoppingList();
 });
 
@@ -46,8 +49,9 @@ btnSaveUserName.addEventListener("click", () => {
     userNameInput.value = " ";
     window.alert("Nome salvo com sucesso!");
     containerUserName.style.display = "none";
-    containerChoiceTypeList.style.display = "block";
+    renderChoiceTypeList();
     welcomeMessage.textContent = `Boas vindas, ${userName}!`;
+    containerHomeUserName.style.height = "80px";
     return;
   }
   window.alert("O nome deve ter entre 2 e 50 caracteres");
@@ -150,4 +154,11 @@ function renderShoppingList() {
       tableBodyItems.appendChild(row);
     }
   });
+}
+
+function renderChoiceTypeList() {
+  containerChoiceTypeList.style.display = "flex";
+  containerChoiceTypeList.style.justifyContent = "center";
+  containerChoiceTypeList.style.alignItems = "center";
+  containerChoiceTypeList.style.flexDirection = "column";
 }
