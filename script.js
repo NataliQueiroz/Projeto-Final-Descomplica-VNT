@@ -114,6 +114,36 @@ function renderShoppingList() {
           renderShoppingList();
         }
       });
+      const editButton = document.createElement("button");
+      editButton.textContent = "Editar";
+      editButton.addEventListener("click", () => {
+        const newName = prompt("Digite o novo nome do item:", item.name);
+        if (newName.length < 2) {
+          window.alert("O nome do item deve ter pelo menos 2 caractes.");
+          return;
+        }
+
+        if (newName.length > 50) {
+          window.alert("O nome do item deve ter no máximo 50 caracteres.");
+          return;
+        }
+        item.name = newName.trim();
+
+        const newQuantity = prompt(
+          "Digite a nova quantidade do item:",
+          item.quantity
+        );
+        const parsedQuantity = parseInt(newQuantity);
+        if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
+          window.alert("A quantidade deve ser um número maior que zero.");
+          return;
+        }
+        item.quantity = parsedQuantity;
+        window.alert("Item atualizado com sucesso!");
+        renderShoppingList();
+      });
+
+      actionsCell.appendChild(editButton);
       actionsCell.appendChild(deleteButton);
       row.appendChild(actionsCell);
 
