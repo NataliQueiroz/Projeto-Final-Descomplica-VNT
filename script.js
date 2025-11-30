@@ -111,6 +111,7 @@ function renderShoppingList() {
         if (index > -1) {
           shoppingList.splice(index, 1);
           tableBodyItems.removeChild(row);
+          renderShoppingList();
         }
       });
       actionsCell.appendChild(deleteButton);
