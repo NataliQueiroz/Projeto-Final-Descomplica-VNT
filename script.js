@@ -20,17 +20,21 @@ const formItem = document.getElementById("form-item");
 const shoppingList = [];
 let userName = "";
 let listType = "";
+let shoppingListType = "compras";
 
 btnSaveTypeList.addEventListener("click", () => {
-  if (radioButtonTypeCompras !== null && radioButtonTypeCompras.checked) {
+  if (radioButtonTypeCompras.checked) {
+    shoppingListType = "compras";
     listType = "Compras";
   }
-  if (radioButtonTypeRemedios !== null && radioButtonTypeRemedios.checked) {
+  if (radioButtonTypeRemedios.checked) {
+    shoppingListType = "remédios";
     listType = "Remédios";
   }
 
   containerAddItem.style.display = "block";
   tableItems.style.display = "block";
+  renderShoppingList();
 });
 
 userNameInput.addEventListener("input", (event) => {
@@ -69,39 +73,50 @@ btnAddItem.addEventListener("click", (event) => {
     return;
   }
 
-  shoppingList.push({ name: itemName, quantity: itemQuantity });
+  shoppingList.push({
+    name: itemName,
+    quantity: itemQuantity,
+    type: shoppingListType,
+  });
+
   itemNameInput.value = "";
   itemQuantityInput.value = "";
-
-  tableBodyItems.innerHTML = "";
-  shoppingList.forEach((item) => {
-    const row = document.createElement("tr");
-    const nameCell = document.createElement("td");
-    nameCell.textContent = item.name;
-    row.appendChild(nameCell);
-
-    const quantityCell = document.createElement("td");
-    quantityCell.textContent = item.quantity;
-    row.appendChild(quantityCell);
-
-    const actionsCell = document.createElement("td");
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Excluir";
-    deleteButton.addEventListener("click", () => {
-      const index = shoppingList.indexOf(item);
-      if (index > -1) {
-        shoppingList.splice(index, 1);
-        tableBodyItems.removeChild(row);
-      }
-    });
-    actionsCell.appendChild(deleteButton);
-    row.appendChild(actionsCell);
-
-    tableBodyItems.appendChild(row);
-  });
+  renderShoppingList();
 });
 
 formItem.addEventListener("submit", (event) => {
   event.preventDefault();
   btnAddItem.click();
 });
+
+function renderShoppingList() {
+  tableBodyItems.innerHTML = "";
+
+  shoppingList.forEach((item) => {
+    if (item.type === shoppingListType) {
+      const row = document.createElement("tr");
+      const nameCell = document.createElement("td");
+      nameCell.textContent = item.name;
+      row.appendChild(nameCell);
+
+      const quantityCell = document.createElement("td");
+      quantityCell.textContent = item.quantity;
+      row.appendChild(quantityCell);
+
+      const actionsCell = document.createElement("td");
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Excluir";
+      deleteButton.addEventListener("click", () => {
+        const index = shoppingList.indexOf(item);
+        if (index > -1) {
+          shoppingList.splice(index, 1);
+          tableBodyItems.removeChild(row);
+        }
+      });
+      actionsCell.appendChild(deleteButton);
+      row.appendChild(actionsCell);
+
+      tableBodyItems.appendChild(row);
+    }
+  });
+}
