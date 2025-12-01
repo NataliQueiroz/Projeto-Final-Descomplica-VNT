@@ -1,10 +1,12 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f5f5f5;
+  background-color: #f1e1ed;
   width: 100%;
   height: 100vh;
+  font-family: Noto Sans, sans-serif;
 }
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -21,8 +23,26 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+button {
+  background-color: #d4b2d8;
+  border-color: #ad42ff;
+  border-radius: 10px;
+}
+
 #container-choice-type-list {
   display: none;
+}
+
+#item-name {
+  background-color: #efece5;
+  border-color: #545999;
+  border-radius: 15px;
+}
+
+#item-quantity {
+  background-color: #efece5;
+  border-color: #545999;
+  border-radius: 15px;
 }
 
 #container-home-user-name {
